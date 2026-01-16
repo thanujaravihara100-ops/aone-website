@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A-one Higher Educational Institute</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --primary: #1e3c72;
+            --primary-alt: #2a5298;
+            --accent: #ff8c2b;
+            --accent-dark: #f2770a;
+            --bg: #f4f6fb;
+            --text: #222222;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #eef3ff 0, #f4f6fb 55%, #e9edf6 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header / Nav */
+        header {
+            background: linear-gradient(120deg, var(--primary), var(--primary-alt));
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-left img {
+            height: 42px;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            opacity: 1;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            color: #fff;
+            padding: 3rem 0 3.8rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 45%),
+              linear-gradient(135deg, var(--primary-alt), var(--primary));
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            right: -120px;
+            top: -80px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent 70%);
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .hero-inner {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            flex: 1 1 320px;
+            min-width: 280px;
+        }
+
+        .hero-logo {
+            max-width: 260px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.4));
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .hero p {
+            font-size: 0.98rem;
+            margin-bottom: 1.5rem;
+            max-width: 32rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.7rem 1.6rem;
+            border-radius: 999px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.96rem;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+            transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            flex: 1 1 320px;
+            min-width: 280px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+            transform: translateY(4px);
+        }
+
+        /* Sections */
+        section {
+            padding: 3rem 0;
+        }
+
+        section:nth-of-type(even) {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.7rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            margin: 0.5rem auto 0;
+            width: 80px;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent), var(--primary-alt));
+        }
+
+        .two-column {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            flex: 1 1 320px;
+            min-width: 280px;
+        }
+
+        .col p {
+            margin-bottom: 0.8rem;
+            font-size: 0.96rem;
+        }
+
+        .col img {
+            border-radius: 16px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Courses */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.7rem;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 1.5rem 1.4rem;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .course-card::before {
+            content: "";
+            position: absolute;
+            right: -40px;
+            top: -40px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(255, 140, 43, 0.12), transparent 70%);
+        }
+
+        .course-card h3 {
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+        }
+
+        .course-card p {
+            font-size: 0.92rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+            border-color: rgba(42, 82, 152, 0.4);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.45rem 1.1rem;
+            border-radius: 999px;
+            border: 1px solid var(--primary-alt);
+            color: var(--primary-alt);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-alt);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        /* Payment section */
+        .payment-layout {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+            padding: 1.6rem 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .student-card {
+            flex: 0 1 280px;
+        }
+
+        .student-card img {
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+        }
+
+        .student-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+        }
+
+        .student-details p {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .student-details span.label {
+            font-weight: 600;
+        }
+
+        .payment-card {
+            flex: 1 1 360px;
+        }
+
+        .payment-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        thead {
+            background: #f0f3ff;
+        }
+
+        th, td {
+            padding: 0.55rem 0.6rem;
+            text-align: left;
+            border-bottom: 1px solid #ececf2;
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            background: #e5f8ec;
+            color: #18854a;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .payment-note {
+            margin-top: 0.9rem;
+            font-size: 0.86rem;
+            color: #18854a;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .payment-note::before {
+            content: "✔";
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info, .contact-form-wrapper {
+            flex: 1 1 320px;
+            min-width: 280px;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.4rem;
+            font-size: 0.92rem;
+        }
+
+        form {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.6rem 0.7rem;
+            border-radius: 10px;
+            border: 1px solid #c9cfde;
+            font-family: inherit;
+            font-size: 0.92rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-alt);
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.18);
+            background: #ffffff;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        footer {
+            background: var(--primary);
+            color: #d7ddf1;
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.85rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Simple static example – no mobile menu toggle */
+            }
+
+            .hero {
+                padding-top: 2.2rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            header {
+                position: static;
+            }
+
+            .section-title {
+                left: 0;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container nav">
+        <div class="nav-left">
+            <!-- Logo in header -->
+            <img src="image1.jpg" alt="A-one Higher Educational Institute logo">
+            <div class="nav-title">A-one Higher Educational Institute</div>
+        </div>
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#payments">Payments</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<section id="home" class="hero">
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <div class="hero-logo">
+                <!-- Logo again in hero (same file) -->
+                <img src="image1.jpg" alt="A-one institute logo">
+            </div>
+            <h1>Higher Education for Your Next Step</h1>
+            <p class="hero-subtitle">Dedicated to high-quality Advanced Level and professional education.</p>
+            <p>
+                A-one Higher Educational Institute provides exam-focused teaching, modern facilities,
+                and a friendly learning environment to help you reach your academic goals.
+            </p>
+            <a href="#courses" class="btn-primary">Explore Courses</a>
+        </div>
+        <div class="hero-image">
+            <!-- Crowd of students -->
+            <img src="student.jpg" alt="Students gathered at A-one Higher Educational Institute">
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">About A-one</h2>
+        <div class="two-column">
+            <div class="col">
+                <p>
+                    A-one Higher Educational Institute is a dedicated center for Advanced Level and
+                    professional education. With a team of experienced lecturers and modern learning
+                    facilities, we focus on delivering result-oriented teaching.
+                </p>
+                <p>
+                    Our students benefit from small-group discussions, up-to-date course material,
+                    and continuous assessment to ensure strong exam performance.
+                </p>
+                <p>
+                    Conveniently located in the city, A-one is easily accessible to students from all
+                    around the region.
+                </p>
+            </div>
+            <div class="col">
+                <!-- Building image -->
+                <img src="image2.jpg" alt="A-one Higher Educational Institute building">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Courses -->
+<section id="courses">
+    <div class="container">
+        <h2 class="section-title">Popular Advanced Level Streams</h2>
+        <div class="courses-grid">
+            <div class="course-card">
+                <h3>ICT</h3>
+                <p>
+                    Strengthen your knowledge in Information &amp; Communication Technology with theory,
+                    practical sessions, and past paper discussions.
+                </p>
+                <a href="#contact" class="btn-outline">View Schedule</a>
+            </div>
+            <div class="course-card">
+                <h3>Physics</h3>
+                <p>
+                    Learn Physics from fundamentals to challenging applications,
+                    with clear explanations and exam-focused problem solving.
+                </p>
+                <a href="#contact" class="btn-outline">View Schedule</a>
+            </div>
+            <div class="course-card">
+                <h3>Combined Mathematics</h3>
+                <p>
+                    Cover Pure and Applied Mathematics with structured lessons,
+                    revision programs, and intensive paper classes.
+                </p>
+                <a href="#contact" class="btn-outline">View Schedule</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Payments -->
+<section id="payments">
+    <div class="container">
+        <h2 class="section-title">Student Payment Status – January 2026</h2>
+
+        <div class="payment-layout">
+            <!-- Student card with ID image -->
+            <div class="card student-card">
+                <!-- Student ID card image -->
+                <img src="student1.png" alt="Student ID card">
+                <div class="student-details">
+                    <h3>Student Information</h3>
+                    <p><span class="label">Name:</span> Thanuja Ravihara</p>
+                    <p><span class="label">Student ID:</span> M51725028</p>
+                    <p><span class="label">Birthday:</span> 2007/08/09</p>
+                </div>
+            </div>
+
+            <!-- Payment details -->
+            <div class="card payment-card">
+                <h3>Subject Payments (All Paid)</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Paid Date &amp; Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ICT</td>
+                            <td>Rs. 2800</td>
+                            <td><span class="status-badge">Paid</span></td>
+                            <td>16 Jan 2026 – 12:18 p.m.</td>
+                        </tr>
+                        <tr>
+                            <td>Physics</td>
+                            <td>Rs. 3500</td>
+                            <td><span class="status-badge">Paid</span></td>
+                            <td>15 Jan 2026 – 10:27 a.m.</td>
+                        </tr>
+                        <tr>
+                            <td>Combined Mathematics</td>
+                            <td>Rs. 5000</td>
+                            <td><span class="status-badge">Paid</span></td>
+                            <td>09 Jan 2026 – 7:38 a.m.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="payment-note">
+                    All subject payments for January 2026 have been successfully received.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p><strong>Address:</strong>14 Padare Pio Mawatha, Negombo</p>
+                <p><strong>Phone:</strong> 0312 222 266</p>
+                <p><strong>Email:</strong> info@aoneinstitute.lk</p>
+                <p>
+                    Visit us or contact our office for class schedules, registrations,
+                    and more information about our programs.
+                </p>
+            </div>
+            <div class="contact-form-wrapper">
+                <form>
+                    <input type="text" placeholder="Your Name">
+                    <input type="email" placeholder="Your Email">
+                    <textarea placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © <span id="year"></span> A-one Higher Educational Institute. All rights reserved.
+</footer>
+
+<script>
+    // Simple script to show current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
